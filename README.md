@@ -1,8 +1,9 @@
-CPU Temperature Monitor for PRTG Custom EXE/Script Sensor in Poweshell
-
-Note - Written for 8 cores.  You may need to edit script for your # of cores on your CPU
+CPU Temperature Monitor for PRTG Custom EXE/Script Sensor - Takes last line of a CSV log file and pareses the data into an XML file compatible with PTRG network monitor tool for Windows.
 
 Instructions:
-1. Set CoreTemp to start with Windows AND Log on Start.
+1. Install Core Temp (http://www.alcpu.com/CoreTemp/) to comfigure to "Start Core Temp with Windows" AND "Enable logging on startup". 
 2. Copy PS1 file to your C:\Program Files (x86)\PRTG Network Monitor\Custom Sensors\EXEXML directory
-3. Set custom variables for your log files 
+3. Set custom variables for your log files for directory, warning temp, and error temp.  Written for 8 cores.  You will need to edit script for your # of cores on your CPU in two areas ($dataArray and $temparray)
+
+Notes:
+Powershell script which takes last line of a CSV log file and pareses the data into an XML file compatible with PTRG network monitor
