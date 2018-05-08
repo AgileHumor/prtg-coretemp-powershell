@@ -23,7 +23,22 @@ $Core5 = $dataArray[6]
 $Core6 = $dataArray[7]
 $Core7 = $dataArray[8]
 
+#Find highest temp in configured cores
+$TempArray = $null
+$TempArray = [array]$Core0,$Core1,$Core2,$Core3,$Core4,$Core5,$Core6,$Core7
+$HigestCoreTemp = ($TempArray | Measure -Max).Maximum
 Write-Host "<prtg>"
+
+Write-Host "<result>"
+Write-Host "<channel>Highest CPU Core Temp</channel>"
+Write-Host "<value>$HigestCoreTemp</value>"
+Write-Host "<float>1</float>"
+Write-Host "<customunit>$tempunit</customunit>"
+Write-Host "<LimitMaxWarning>$WarnTemp</LimitMaxWarning>"
+Write-Host "<LimitMaxError>$ErrorTemp</LimitMaxError>"
+Write-Host "<LimitWarningMsg>Temperature at the warning limit</LimitWarningMsg>"
+Write-Host "<LimitErrorMsg>Temperature at the error limit</LimitErrorMsg>"
+Write-Host "</result>"
 
 Write-Host "<result>"
 Write-Host "<channel>Core 0</channel>"
