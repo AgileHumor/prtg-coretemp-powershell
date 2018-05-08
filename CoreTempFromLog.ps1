@@ -5,14 +5,18 @@ $tempunit = "F"
 $WarnTemp = 150
 $ErrorTemp = 200
 
-# Get latest log file in $dir matching $logfilepattern
+# Get latest file in $dir matching $logfilepattern
+$latest = $null
+$myFileName = $null
 $latest = Get-ChildItem -Path $dir$logfilepattern | Sort-Object LastAccessTime -Descending | Select-Object -First 1
 $myFileName = $latest
 
-# Get last one row of file into variable 
+# Get last row of CSV log file into variable 
+$lastDataRow = $Null
 $lastDataRow = (Get-Content $myFileName)[-1]
 
-#parse the CSV data back into separate variables, one for each column 
+#parse the CSV data back into separate variables, one for each column.  In this case, we are getting colums 2-9 of CSV outputted from Core Temp (skipping index 0 in array, and just getting 1-8)
+$dataArray = $Null
 $dataArray = $lastDataRow.Split(",") 
 $Core0 = $dataArray[1]
 $Core1 = $dataArray[2]
@@ -23,10 +27,13 @@ $Core5 = $dataArray[6]
 $Core6 = $dataArray[7]
 $Core7 = $dataArray[8]
 
-#Find highest temp in configured cores
+#Find highest temp in configured cores of array
 $TempArray = $null
 $TempArray = [array]$Core0,$Core1,$Core2,$Core3,$Core4,$Core5,$Core6,$Core7
 $HigestCoreTemp = ($TempArray | Measure -Max).Maximum
+
+
+#Output XML compatible with PTRG
 Write-Host "<prtg>"
 
 Write-Host "<result>"
