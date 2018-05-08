@@ -1,4 +1,4 @@
-CPU Temperature Monitor for PRTG Custom EXE/Script Sensor - Takes last line of a CSV log file and pareses the data into an XML file compatible with PTRG network monitor tool for Windows.  
+CPU Temperature Monitor for PRTG Custom EXE/Script Sensor - Takes last line/row, and the and takes the 2nd-9th column, of a CSV log file and parses the data into console display an XML file compatible with PTRG network monitor tool for Windows.
 
 Instructions:
 1. Install Core Temp (http://www.alcpu.com/CoreTemp/) to comfigure to "Start Core Temp with Windows" AND "Enable logging on startup". 
