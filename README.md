@@ -8,5 +8,3 @@ $dir = "C:\Program Files\Core Temp\"
 $tempunit = "F"
 $WarnTemp = 150
 $ErrorTemp = 200
-
-
